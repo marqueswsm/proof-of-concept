@@ -1,6 +1,6 @@
 const amqp = require('amqplib/callback_api');
 
-amqp.connect('amqp://localhost', (error0, connection) => {
+amqp.connect('amqp://localhost', function (error0, connection) {
   if (error0) {
     throw error0;
   }
@@ -13,9 +13,10 @@ amqp.connect('amqp://localhost', (error0, connection) => {
     channel1.assertQueue('hello', { durable: false });
     channel1.sendToQueue('hello', Buffer.from('https://www.linkedin.com/in/marqueswsm/'));
   });
+
+  setTimeout(function() { 
+    connection.close(); 
+    process.exit(0) 
+  }, 500);
 });
 
-setTimeout(() => { 
-  connection.close(); 
-  process.exit(0) 
-}, 500);
