@@ -14,3 +14,8 @@ amqp.connect('amqp://localhost', (error0, connection) => {
     channel1.sendToQueue('hello', Buffer.from('https://www.linkedin.com/in/marqueswsm/'));
   });
 });
+
+setTimeout(() => { 
+  connection.close(); 
+  process.exit(0) 
+}, 500);
