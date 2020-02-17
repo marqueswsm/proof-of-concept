@@ -1,0 +1,23 @@
+{
+  "name": "poc-rabbitmq",
+  "version": "1.0.0",
+  "description": "O RabbitMQ é um message broker open sorce amplamente utilizado, visto que é considerado uma alternativa leve e fácil de implantar em um ambiente local e na nuvem. Ele suporta vários protocolos de mensagens e pode implantado em configurações distribuídas para atender aos requisitos de alta escala e alta disponibilidade. Mas informações podem ser obtidas no site oficial da tecnologia. Nesse sentido, este repositório foi criado a fim de prover uma prova de conceito simples de uma implementação do rabbitmq utilizando nodejs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marqueswsm/poc-rabbitmq.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marqueswsm/poc-rabbitmq/issues"
+  },
+  "homepage": "https://github.com/marqueswsm/poc-rabbitmq#readme",
+  "dependencies": {
+    "amqplib": "^0.5.5"
+  }
+}
