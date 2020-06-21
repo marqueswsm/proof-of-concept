@@ -54,3 +54,32 @@ docker run -d --name kong \
      -p 127.0.0.1:8444:8444 \
      kong:latest
 ```
+
+### Proof-of-Concept
+
+Here, we will define a service and a route into Kong. We will use the public API provided by the github to test the gateway routing function provided by Kong. To do it, we will try get a github's user using an username.
+
+1 - We need to create an service instance on Kong. To do it, we must to define a service name and its baseUrl:
+```
+curl -i -X POST \
+--url http://localhost:8001/services/ \
+--data 'name=github' \
+--data 'url=https://api.github.com/users'
+```
+
+2 - Then, we can define a route to the created service. As you can se bellow, we define a path that Kong will use to route the request for the properly service:
+```
+curl -i -X POST http://localhost:8001/services/github/routes \
+  --data 'paths[]=/gihub' \
+  --data 'name=github'
+```
+
+3 - Now, we can perform a request to our service (in this case github) throughout the gateway API:
+```
+curl -i -X GET \
+--url http://localhost:8000/github/users/marqueswsm
+```
+
+### Conclusions
+
+Kong is a really great platform to use as an API Gateway. It is open source and provide a good documentation. I also will test Konga to perform the service management using a GUI.
