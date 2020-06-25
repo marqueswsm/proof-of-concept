@@ -1,17 +1,17 @@
 # Kong API Gateway
 
-API Gateway are inserted between the client and services, routing the requests of these clients to the properly service. In the same sense, API Gateways can be used to a lot of functions, including **Gateway Routing, Gateway Aggregation, and Gateway Offloading.** In this repository, we will use Kong to perform the gateway routing. If you want to learn more about API Gateway, I recommend you to take a look at [Microsoft documentation](https://docs.microsoft.com/en-us/azure/architecture/microservices/design/gateway).
+API Gateway is inserted between the client and services, routing the requests of these clients to the appropriate service. In the same sense, API Gateways can be used to a lot of functions, including **Gateway Routing, Gateway Aggregation, and Gateway Offloading.** In this repository, we will use Kong to perform the gateway routing. If you want to learn more about API Gateway, I recommend you to take a look at [Microsoft documentation](https://docs.microsoft.com/en-us/azure/architecture/microservices/design/gateway).
 
 ### How to install
 
-As you can see in the kong doc, we have several ways to install king locally. In this proof-of-concept, I installed Kong using docker.
+As you can see in the kong doc, we have several ways to install Kong locally. In this proof-of-concept, I installed Kong using docker.
 
 1 - Firstly, we need to create a docker network:
 ```
 docker network create kong-net
 ```
 
-2 - Then, we must to create a database container:
+2 - Then, we should create a database container:
 ```
 docker run -d --name kong-database \
                --network=kong-net \
@@ -22,7 +22,7 @@ docker run -d --name kong-database \
                postgres:9.6
 ```
 
-3 - After create our database, we can run the kong migrations:
+3 - After creating our database, we can run the kong's migrations:
 ```
 docker run --rm \
      --network=kong-net \
@@ -57,9 +57,9 @@ docker run -d --name kong \
 
 ### Proof-of-Concept
 
-Here, we will define a service and a route into Kong. We will use the public API provided by the github to test the gateway routing function provided by Kong. To do it, we will try get a github's user using an username.
+Here, we will define a service and a route into Kong. We will use the public API provided by GitHub to test the gateway routing function provided by Kong. To do it, we will try to get a Github's user using a username.
 
-1 - We need to create an service instance on Kong. To do it, we must to define a service name and its baseUrl:
+1 - We need to create a service instance on Kong. To do it, we must define a service name and its baseUrl:
 ```
 curl -i -X POST \
 --url http://localhost:8001/services/ \
@@ -67,14 +67,14 @@ curl -i -X POST \
 --data 'url=https://api.github.com/users'
 ```
 
-2 - Then, we can define a route to the created service. As you can se bellow, we define a path that Kong will use to route the request for the properly service:
+2 - Then, we can define a route to the created service. As you can see below, we define a path that Kong will use to route the request for the suitable service:
 ```
 curl -i -X POST http://localhost:8001/services/github/routes \
   --data 'paths[]=/gihub' \
   --data 'name=github'
 ```
 
-3 - Now, we can perform a request to our service (in this case github) throughout the gateway API:
+3 - Now, we can perform a request to our service (in this case Github) throughout the gateway API:
 ```
 curl -i -X GET \
 --url http://localhost:8000/github/users/marqueswsm
@@ -82,4 +82,4 @@ curl -i -X GET \
 
 ### Conclusions
 
-Kong is a really great platform to use as an API Gateway. It is open source and provide a good documentation. I also will test Konga to perform the service management using a GUI.
+Kong is a really great platform to use as an API Gateway. It is an open-source and provides good documentation. I also will test Konga to perform service management using a GUI.
