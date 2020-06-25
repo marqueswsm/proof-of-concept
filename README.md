@@ -10,6 +10,12 @@ O RabbitMQ é um message broker open sorce amplamente utilizado, visto que é co
 
 [Projeto](https://github.com/marqueswsm/proof-of-concept/tree/master/packages/poc-rabbitmq)
 
+### Kong Api Gateway
+
+O API Gateway é inserido entre o cliente e os serviços em execução, ao passo que realizar o roteamento das solicitações desses clientes para o serviço apropriado. No mesmo sentido, os API Gateways também podem ser usados para várias funções, incluindo **Gateway Routing, Gateway Aggregation, and Gateway Offloading.** Nesse repositório, usaremos Kong para a função de Gateway Routing. Se você quiser saber mais sobre API Gateway, recomendo que você consulte a [documentação da Microsoft](https://docs.microsoft.com/en-us/azure/architecture/microservices/design/gateway).
+
+[Projeto](https://github.com/marqueswsm/proof-of-concept/tree/master/packages/poc-kong-gateway)
+
 ### Lincença
 
 MIT License
